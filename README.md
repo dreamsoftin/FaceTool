@@ -11,6 +11,16 @@ A simple python package to crop and align faces. Uses Mediapipe for face detecti
 --- | --- | --- | ----
 |![before](assets/after3.jpg "before")|![after_zoom_1](assets/after_zoom_1.jpg "after_zoom_1")|![after_zoom_4](assets/after_zoom_4.jpg "after_zoom_4")|![after_offset_200](assets/after_offset_200.jpg "after_offset_200")
 ---
+## Requirements
+* Python 3.6
+* MediaPipe
+* OpenCV
+
+install all dependencies
+```bash
+pip install -r requirements.txt
+```
+---
 ## Usage
 
 ```PYTHON
