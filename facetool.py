@@ -207,7 +207,6 @@ class FaceTool:
         faces.sort(key=lambda x: x.area, reverse=True)
         return len(face_results.detections), faces, "Success"
 
-
 if __name__ == "__main__":
     facetool = FaceTool(debug=False)
     videoMode = True
@@ -216,7 +215,7 @@ if __name__ == "__main__":
         vid = cv2.VideoCapture(0)
         while True:
             ret, image = vid.read()
-            face_count, faces, message = facetool.crop_and_align(image)
+            face_count, faces, message = facetool.crop_and_align(image,zoom_factor=2, offset_y=-10)
             if face_count > 0:
                 cv2.imwrite(path + "/output/video.png", faces[0].image)
                 cv2.imshow("aligned_image", faces[0].image)
@@ -235,10 +234,11 @@ if __name__ == "__main__":
             print(filePath[1])
             image = cv2.imread(filePath[1])
             face_count, faces, message = facetool.crop_and_align(
-                image, size=256, zoom_factor=2, offset_y=-10)
+                image, size=512, zoom_factor=2, offset_y=-10)
             if face_count > 0:
                 # face are sorted by area
                 # takes the face with largest area.
+                
                 cv2.imwrite(path + "/output/" + filePath[0], faces[0].image)
                 cv2.imshow("aligned_image", faces[0].image)
             else:
